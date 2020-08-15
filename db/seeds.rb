@@ -18,3 +18,16 @@ users_list = [
 users_list.each do |f,l,e|
   User.create(first_name: f, last_name: l, email: e, password: 'password', password_confirmation: 'password')
 end
+
+friendship_list = [
+  [1, 2, true],
+  [1, 3, true],
+  [1, 4, true],
+  [1, 5, false],
+  [2, 3, true],
+  [2, 4, false]
+]
+
+friendship_list.each do |u,f,a|
+  Friendship.create(user_id: u, friend_id: f, accepted: a)
+end
