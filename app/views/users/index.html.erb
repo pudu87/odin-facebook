@@ -16,3 +16,7 @@
   </li>
   <% end %>
 </ul>
+
+<% if current_user %>
+  <%= link_to ">>Timeline", posts_path %>
+<% end %>

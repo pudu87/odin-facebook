@@ -19,7 +19,7 @@ users_list.each do |f,l,e|
   User.create(first_name: f, last_name: l, email: e, password: 'password', password_confirmation: 'password')
 end
 
-friendship_list = [
+friendships_list = [
   [1, 2, true],
   [1, 3, true],
   [1, 4, true],
@@ -28,6 +28,18 @@ friendship_list = [
   [2, 4, false]
 ]
 
-friendship_list.each do |u,f,a|
-  Friendship.create(user_id: u, friend_id: f, accepted: a)
+friendships_list.each do |u,f,a|
+  Friendship.find_or_create_by(user_id: u, friend_id: f, accepted: a)
+end
+
+posts_list = [
+  [1, 'I scored a hattrick against Lokeren.'],
+  [2, 'I won a silver medal in Russia 2018.'],
+  [4, 'They call me the Bosnian Wizard.'],
+  [6, "Please don't remind me of that own goal against Anderlecht."],
+  [2, 'I played for Bayeren Munchen and Inter Milan, but my favourite team will always be Roeselare.']
+]
+
+posts_list.each do |u,c|
+  Post.find_or_create_by(user_id: u, content: c)
 end
