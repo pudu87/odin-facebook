@@ -43,3 +43,15 @@ posts_list = [
 posts_list.each do |u,c|
   Post.find_or_create_by(user_id: u, content: c)
 end
+
+comments_list = [
+  [3, 1, 'I was there. Rocky I, Rocky II, Rocky III!'],
+  [2, 1, 'We could use you in the Croatian team, Rocky.'],
+  [1, 1, "I retired already, Ivan. But, let me know if they need a trainer."],
+  [3, 2, 'Well done, Ivan.'],
+  [3, 2, 'One day we will win that cup with Haiti.']
+]
+
+comments_list.each do |u,pt,c|
+  Comment.find_or_create_by(user_id: u, post_id: pt, content: c)
+end

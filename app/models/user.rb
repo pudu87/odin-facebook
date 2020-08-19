@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :inverse_friends, through: :inverse_friendships, source: :user
   
   has_many :posts
+  has_many :comments
 
   def confirmed_friends
     (friendships.map{ |fs| fs.friend if fs.accepted? } + 

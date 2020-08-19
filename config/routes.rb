@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
   resources :friendships, only: [:create, :update, :destroy]
-  resources :posts, except: [:show]
+  resources :posts, except: [:show] do
+    resources :comments, only: [:create, :update, :destroy]
+  end
 end

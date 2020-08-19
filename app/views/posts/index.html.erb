@@ -8,6 +8,9 @@
         <br><%= link_to ">>Edit", edit_post_path(post) %>
         <%= link_to ">>Delete", post_path(post), method: :delete, data: {confirm: "Remove this post?"} %>
       <% end %>
+      <h3>Comments</h3>
+      <%= render partial: 'posts/comment', collection: post.comments %>
+      <%= render partial: 'comments/form', locals: {post: post}%>
     </li>
   <% end %>
 </ul>
