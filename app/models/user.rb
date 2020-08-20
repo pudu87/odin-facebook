@@ -13,6 +13,7 @@ class User < ApplicationRecord
   
   has_many :posts
   has_many :comments
+  has_many :likes
 
   def confirmed_friends
     (friendships.map{ |fs| fs.friend if fs.accepted? } + 

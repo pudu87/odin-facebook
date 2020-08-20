@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     @posts = (current_user.posts +
       current_user.confirmed_friends.map{ |f| f.posts }.flatten)
       .sort_by(&:created_at).reverse
+      #TODO create a @like-instance to simplify view
   end
 
   def new

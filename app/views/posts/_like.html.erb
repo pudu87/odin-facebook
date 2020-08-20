@@ -1,0 +1,8 @@
+<div>
+  <%= post.likes.count %> LIKES || 
+  <% unless current_user.likes.find_by_post_id(post.id) %>
+    <%= link_to "---Like---", post_likes_path(post), method: :post %>
+  <% else %>
+    <%= link_to "--Unlike--", post_like_path(post, post.likes.find_by_user_id(current_user)), method: :delete %>
+  <% end %>
+</div>
