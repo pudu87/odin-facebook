@@ -68,3 +68,12 @@ likes_list = [
 likes_list.each do |u,pt|
   Like.find_or_create_by(user_id: u, post_id: pt)
 end
+
+profiles_list = [
+  [1, Date.parse('18-08-1979'), 'M', 'Herentals'],
+  [2, Date.parse('02-02-1989'), 'M', 'Munchen']
+]
+
+profiles_list.each do |u,bd,s,l|
+  User.find(u).profile.update(birthdate: bd, sex: s, location: l)
+end

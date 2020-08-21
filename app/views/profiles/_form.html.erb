@@ -1,0 +1,21 @@
+<%= form_with model: @profile, url: [@profile.user, @profile], local: true do |f| %>
+  <%= f.label :birthdate, 'Birthdate:' %><br>
+  <%= f.date_field :birthdate %><br>
+  <br>
+  <%= f.label :sex, 'Select your gender:' %><br>
+  <%= f.radio_button :sex, 'M' %>
+  <%= f.label :M, 'XY' %><br>
+  <%= f.radio_button :sex, 'F' %>
+  <%= f.label :F, 'XX' %><br>
+  <%= f.radio_button :sex, 'X' %>
+  <%= f.label :X, 'None of the previous' %><br>
+  <%= f.radio_button :sex, '' %>
+  <%= f.label :Hide, 'Hide' %><br>
+  <br>
+  <%= f.label :location, 'Location:' %><br>
+  <%= f.text_field :location %><br>
+  <br>
+  <%= f.file_field :photo %><br>
+  <br>
+  <%= f.submit 'Submit' %>
+<% end %>

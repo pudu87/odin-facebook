@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  after_create :init_profile
+
   validates :first_name, :last_name, presence: true
 
   has_many :friendships
@@ -14,6 +16,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :likes
+  has_one  :profile
 
   def confirmed_friends
     (friendships.map{ |fs| fs.friend if fs.accepted? } + 
@@ -21,7 +24,7 @@ class User < ApplicationRecord
   end
 
   # users that have SENT a request
-  def pending_friends 
+  def pending_friends
     inverse_friendships.map{ |fs| fs.user unless fs.accepted? }.compact
   end
 
@@ -34,5 +37,9 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def init_profile
+    self.create_profile
   end
 end

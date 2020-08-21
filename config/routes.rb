@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root to: 'users#index'
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    resources :profiles, only: [:edit, :update]
+  end
   resources :friendships, only: [:create, :update, :destroy]
   resources :posts, except: [:show] do
     resources :comments, only: [:create, :update, :destroy]
