@@ -20,8 +20,10 @@
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to "Sign up", new_user_registration_path %> |
-        <%= link_to "Login", new_user_session_path %>
+        <%= link_to "Login", new_user_session_path %> |
+        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
       <% end %>
+      
       <% if current_user && !current_user.pending_friends.empty? %>
         <br>
         <%= link_to "You have friendship requests.", root_path %>
