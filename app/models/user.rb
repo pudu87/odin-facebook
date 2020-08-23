@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
 
-  after_create :init_profile
+  after_create :init_profile, :send_welcome_email
 
   validates :first_name, :last_name, presence: true
 
@@ -63,5 +63,9 @@ class User < ApplicationRecord
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  def send_welcome_email
+    UserMailer.with(user: self).welcome.deliver_now
   end
 end
