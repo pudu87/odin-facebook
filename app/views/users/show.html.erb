@@ -7,7 +7,7 @@
   <% end %>
   <ul>
     <li>Birth date: <%= @profile.birthdate %></li>
-    <li>Sex: <%= @profile.sex %></li>
+    <li>Gender: <%= @profile.sex %></li>
     <li>Location: <%= @profile.location %></li>
   </ul>
   <% if current_user == @user %>
@@ -19,7 +19,15 @@
 <%= link_to ">>New", new_post_path %>
 <ul>
   <% @user.posts.each do |post| %>
-    <li><%= post.content %><br>
+    <li>
+      <% if post.photo.attached? %>
+        <%= image_tag post.photo, width: "150" %>
+        <br>
+      <% end %>
+      <% if post.content %>
+        <%= post.content %>
+      <% end %>
+      <br>
       <%= render partial: 'posts/like', locals: {post: post} %>
       <% if current_user == @user %>
         <%= link_to ">>Edit", edit_post_path(post) %>

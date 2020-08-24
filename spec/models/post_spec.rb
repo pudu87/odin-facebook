@@ -7,12 +7,12 @@ RSpec.describe Post, type: :model do
   end
 
   context 'validation tests' do
-    it 'saves if all necessary data are present' do
+    it 'saves if it has a content' do
       post = @user.posts.build(content: 'This is a post')
       expect(post.save).to eq(true)
     end
 
-    it 'ensures content presence' do
+    it 'ensures data presence' do
       post = @user.posts.build()
       expect(post.save).to eq(false)
     end
