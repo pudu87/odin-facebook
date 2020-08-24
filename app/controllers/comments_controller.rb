@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @comment = Comment.new(post_params)
@@ -6,12 +7,11 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.save
 
-    redirect_to posts_path
-    # TODO: redirect to timeline if on timeline and to userpage if on userpage
+    redirect_back(fallback_location: root_path)
   end
 
   def update
-    #TODO
+    #TODO (probably need javascript for this)
   end
 
   def destroy
@@ -19,8 +19,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     flash.notice = 'Comment deleted'
 
-    redirect_to posts_path
-    # TODO: redirect to timeline if on timeline and to userpage if on userpage
+    redirect_back(fallback_location: root_path)
   end
 
   private

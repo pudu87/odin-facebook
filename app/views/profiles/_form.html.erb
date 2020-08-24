@@ -1,5 +1,5 @@
 <%= form_with model: @profile, url: [@profile.user, @profile], local: true do |f| %>
-  <%= f.label :birthdate, 'Birthdate:' %><br>
+  <%= f.label :birthdate, "What's your birthdate?" %><br>
   <%= f.date_field :birthdate %><br>
   <br>
   <%= f.label :sex, 'Select your gender:' %><br>
@@ -12,9 +12,10 @@
   <%= f.radio_button :sex, '' %>
   <%= f.label :Hide, 'Hide' %><br>
   <br>
-  <%= f.label :location, 'Location:' %><br>
+  <%= f.label :location, 'Where do you live?' %><br>
   <%= f.text_field :location %><br>
   <br>
+  <%= f.label :photo, 'Send us a nice picture of yourself:' %><br>
   <%= f.file_field :photo %><br>
   <br>
   <%= f.submit 'Submit' %>

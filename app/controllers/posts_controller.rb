@@ -1,14 +1,10 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :edit]
+  before_action :authenticate_user!
 
   def index
     @posts = (current_user.posts +
       current_user.confirmed_friends.map{ |f| f.posts }.flatten)
       .sort_by(&:created_at).reverse
-      #TODO create a @like-instance to simplify view
-  end
-
-  def new
     @post = Post.new
   end
 

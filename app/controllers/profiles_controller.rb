@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!, only: [:edit]
+  before_action :authenticate_user!
 
   def edit
     @profile = Profile.find(params[:id])
@@ -7,13 +7,9 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    if @profile.update(profile_params)
-      flash.notice = 'Profile updated.'
-      redirect_to user_path(@profile.user)
-    else
-      flash.notice = 'Something went horribly wrong.'
-      render :edit
-    end
+    @profile.update(profile_params)
+    flash.notice = 'Profile updated.'
+    redirect_to user_path(@profile.user)
   end
 
   private
