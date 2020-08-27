@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @users = User.all
-    #TODO: show invitation requests at the top
+    @users = current_user.sort_for_index
   end
 
   def show

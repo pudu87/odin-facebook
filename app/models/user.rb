@@ -29,11 +29,23 @@ class User < ApplicationRecord
     inverse_friendships.map{ |fs| fs.user unless fs.accepted? }.compact
   end
 
+  # users that have RECEIVED a request
+  def proposed_friends
+    friendships.map{ |fs| fs.friend unless fs.accepted? }.compact
+  end
+
   # no friend and no request
   def possible_friends
     ids = (friendships.map{ |fs| fs.friend_id } +
       inverse_friendships.map{ |fs| fs.user_id }).compact
     User.where.not(id: ids) - [self]
+  end
+
+  def sort_for_index
+    (pending_friends.sort_by(&:last_name) +
+      confirmed_friends.sort_by(&:last_name) +
+      proposed_friends.sort_by(&:last_name) +
+      possible_friends.sort_by(&:last_name))
   end
 
   def full_name

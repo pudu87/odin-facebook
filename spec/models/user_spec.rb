@@ -41,11 +41,13 @@ RSpec.describe User, type: :model do
       user_2 = User.create(first_name: 'Ivan', last_name: 'Perisic', email: 'ivan@internet.com', password: 'password', password_confirmation: 'password')
       @user_3 = User.create(first_name: 'Wagneau', last_name: 'Eloi', email: 'wagneau@internet.com', password: 'password', password_confirmation: 'password')
       user_4 = User.create(first_name: 'Damir', last_name: 'Mirvic', email: 'damir@internet.com', password: 'password', password_confirmation: 'password')
-      user_5 = User.create(first_name: 'Mama', last_name: 'Dissa', email: 'mama@internet.com', password: 'password', password_confirmation: 'password')
-      user_6 = User.create(first_name: 'Jurgen', last_name: 'Sierens', email: 'jurgen@internet.com', password: 'password', password_confirmation: 'password')
+      user_5 = User.create(first_name: 'Jurgen', last_name: 'Sierens', email: 'jurgen@internet.com', password: 'password', password_confirmation: 'password')
+      user_6 = User.create(first_name: 'Mama', last_name: 'Dissa', email: 'mama@internet.com', password: 'password', password_confirmation: 'password')
       @user_1.friendships.create(friend_id: user_2.id, accepted: true)
       @user_1.friendships.create(friend_id: @user_3.id, accepted: false)
       @user_1.friendships.create(friend_id: user_4.id)
+      @user_3.friendships.create(friend_id: user_2.id, accepted: false)
+      @user_3.friendships.create(friend_id: user_4.id, accepted: true)
     end
 
     describe 'confirmed friends' do
@@ -66,6 +68,13 @@ RSpec.describe User, type: :model do
       it 'filters users that are no friend and did not have a request' do
         possible = @user_1.possible_friends
         expect(possible.count).to eq(2)
+      end
+    end
+
+    describe 'index sort' do
+      it 'returns the index of users sorted by friendship status' do
+        users = @user_3.sort_for_index
+        expect(users.pluck(:last_name)).to eq(['Peeters', 'Mirvic', 'Perisic', 'Dissa', 'Sierens'])
       end
     end
 
