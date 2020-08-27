@@ -33,5 +33,4 @@ class FriendshipsController < ApplicationController
     flash.notice = "You removed #{friend.full_name}. This is gonna be awkard."
     redirect_back(fallback_location: root_path)
   end
-  
 end

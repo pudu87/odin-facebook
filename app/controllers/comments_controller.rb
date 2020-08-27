@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    #TODO (probably need javascript for this)
+    #TODO (this needs Javascript)
   end
 
   def destroy

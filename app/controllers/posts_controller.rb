@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    session[:return_to] ||= request.referer
     @post = Post.find(params[:id])
   end
 
@@ -23,8 +24,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.update(post_params)
     flash.notice = 'Post updated'
-    redirect_to root_path
-    #TODO: return to previous path
+    redirect_to session.delete(:return_to)
   end
 
   def destroy
