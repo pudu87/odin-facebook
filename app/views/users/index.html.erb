@@ -3,16 +3,26 @@
 
   <ul><% @users.each do |user| %>
     <li id="friend">
-      <%= link_to user.full_name, user_path(user), class: "friend_name" %>
-      <% if current_user.pending_friends.include?(user) %>
-        <%= link_to "Accept friend request", friendship_path(user, friend_id: user.id), method: :put, class: "option" %>
-      <% end %>
-      <% if current_user.possible_friends.include?(user) %>
-        <%= link_to "Send friend request", friendships_path(friend_id: user.id), method: :post, class: "option" %>
-      <% end %>
-      <% if current_user.confirmed_friends.include?(user) %>
-        <%= link_to "Remove as friend", friendship_path(user, friend_id: user.id), method: :delete, data: {confirm: "Remove this friend?"}, class: "option" %>
-      <% end %>
+      <div id="photo-name">
+        <div id="photo-div">
+          <% if user.profile.photo.attached? %>
+            <%= image_tag user.profile.photo, class: "photo" %>
+          <% end %>
+        </div>
+        <%= link_to user.full_name, user_path(user), class: "friend_name" %>
+      </div>
+      
+      <div id="friend-option">
+        <% if current_user.pending_friends.include?(user) %>
+          <%= link_to "Accept friend request", friendship_path(user, friend_id: user.id), method: :put, class: "option" %>
+        <% end %>
+        <% if current_user.possible_friends.include?(user) %>
+          <%= link_to "Send friend request", friendships_path(friend_id: user.id), method: :post, class: "option" %>
+        <% end %>
+        <% if current_user.confirmed_friends.include?(user) %>
+          <%= link_to "Remove as friend", friendship_path(user, friend_id: user.id), method: :delete, data: {confirm: "Remove this friend?"}, class: "option" %>
+        <% end %>
+      </div>
     </li>
     <% end %>
   </ul>

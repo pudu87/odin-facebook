@@ -185,10 +185,26 @@ h3{
 /*---FRIENDS (USERS-INDEX)---*/
 
 #users_index #friend{
+  margin: 10px;
+  height: 50px;
+  display: inline-block;
   display: flex;
-  margin: 12px;
   justify-content: space-between;
   align-items: center;
+}
+
+#users_index #photo-div{ 
+  display: inline-block;
+  width: 60px;
+}
+
+#users_index .photo{
+  vertical-align: middle;
+  display: inline-block;
+  border-radius: 50px;
+  max-width: 50px;
+  max-height: 30px;
+  text-align: center;
 }
 
 #users_index .friend_name{
@@ -213,7 +229,15 @@ h3{
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  width: 50%;
+  width: 65%;
+}
+
+#profile .photo{
+  border: 1px solid rgb(0, 70, 0);
+  border-radius: 3px;
+  padding: 5px;
+  max-width: 150px;
+  max-height: 150px;
 }
 
 #profile .data{
@@ -258,6 +282,3 @@ h3{
 #edit-registration .actions{
   margin-bottom: 35px;
 }
-
-/*---EDIT_NAMES---*/
-
