@@ -14,10 +14,10 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :inverse_friends, through: :inverse_friendships, source: :user
   
-  has_many :posts
-  has_many :comments
-  has_many :likes
-  has_one  :profile
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_one  :profile, dependent: :destroy
 
   def confirmed_friends
     (friendships.map{ |fs| fs.friend if fs.accepted? } + 
