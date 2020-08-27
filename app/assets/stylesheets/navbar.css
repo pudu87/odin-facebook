@@ -1,0 +1,53 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: mediumseagreen;
+  color: white;
+  font-family: Arial;
+  z-index: 1;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar .container {
+  display: flex;
+  margin: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nav-title {
+  font-size: 34px;
+  font-weight: bold;
+  font-family: Verdana;
+}
+
+#nav-logins .nav-item, #nav-links .nav-item {
+  margin: 10px;
+  padding: 12px;
+  border: 1px solid green;
+  border-style: outset;
+}
+
+#messages {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#nav-user {
+  font-size: 12px;
+}
+
+#nav-requests {
+  padding: 5px;
+  background-color: rgb(128, 47, 0);
+  border: 1px solid green;
+  border-style: outset;
+}
+
+

@@ -1,7 +1,7 @@
 <h2><%= current_user.full_name %>'s Timeline</h2>
 
 <%= render partial: 'posts/form', locals: {post: @post} %>
-<%= render @posts %>
 
-<%= link_to ">>Friends", users_path %> ||
-<%= link_to ">>My Profile", user_path(current_user) %>
+<div class="posts">
+  <%= render @posts %>
+</div>

@@ -1,0 +1,263 @@
+/*---GENERAL---*/
+
+#wrapper{
+  margin: auto;
+  width: 50%;
+  margin-top: 130px;
+  font-family: Verdana;
+}
+
+h2{
+  font-size: 18px;
+  color: rgb(0, 70, 0);
+}
+
+h3{
+  font-size: 16px;
+  color: rgb(0, 70, 0);
+  border-bottom: 1px solid rgb(0, 70, 0);
+  padding-bottom: 5px;
+  margin-top: 25px;
+}
+
+/*---TIMELINE (POST-INDEX)---*/
+
+#new-post{
+  margin: auto;
+  width: 70%;
+}
+
+#new-post #post_content{
+  border: 1px groove rgb(100, 100, 100);
+  border-radius: 5px;
+  resize: none;
+  width: 100%;
+}
+
+#new-post .buttons{
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#new-post .photo{
+  font-size: 12px;
+}
+
+.posts{
+  padding-top: 20px;
+}
+
+/*---_POST---*/
+
+.post{
+  border: 1px solid rgb(0, 70, 0);
+  border-radius: 20px;
+  padding: 15px;
+  width: 70%;
+  margin-bottom: 20px;
+  background-color: rgb(248, 255, 248)
+}
+
+.post .post-author{
+  color: rgb(0, 70, 0);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.post .time{
+  font-size: 12px;
+  font-style: italic;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.post .photo-content{
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid rgb(175, 210, 175);
+  border-radius: 2px;
+  background-color: white;
+}
+
+.post .content{
+  font-family: Arial;
+  font-size: 18px;
+}
+
+.post .options{
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post #count, .post #like, .post #unlike{
+  display: inline-block;
+}
+
+.post #count {
+  font-style: italic;
+  margin-left: 5px;
+}
+
+.post #like, .post #unlike{
+  margin-left: 10px;
+  color: rgb(0, 70, 0);
+  padding: 2px;
+  border: 1px solid rgb(0, 70, 0);
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.post .edit-delete{
+  text-align: right;
+}
+
+.post .edit, .post .delete{
+  color: rgb(0, 70, 0);
+  padding: 2px;
+  border: 1px solid rgb(0, 70, 0);
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.post h4{
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/*---_COMMENT---*/
+
+.comment{
+  border-top: 1px solid rgb(0, 70, 0);
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.comment #name-options{
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment .comment-author{
+  color: rgb(0, 70, 0);
+  font-weight: bold;
+}
+
+.comment .edit-delete{
+  text-align: right;
+}
+
+.comment .edit, .comment .delete{
+  color: rgb(0, 70, 0);
+  padding: 2px;
+  border: 1px solid rgb(0, 70, 0);
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.comment .time{
+  margin-bottom: 0;
+}
+
+.comment .content{
+  margin: 10px;
+  margin-top: 2px;
+  padding: 3px;
+  border: 1px solid rgb(175, 210, 175);
+  border-radius: 2px;
+  background-color: white;
+  font-size: 14px;
+}
+
+.comments #new-comment{
+  border-top: 1px solid rgb(0, 70, 0);
+  padding-top: 10px;
+}
+
+/*---FRIENDS (USERS-INDEX)---*/
+
+#users_index #friend{
+  display: flex;
+  margin: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#users_index .friend_name{
+  color: black;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+#users_index .option{
+  color: rgb(0, 70, 0);
+  padding: 2px;
+  border: 1px solid rgb(0, 70, 0);
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+/*---MY PROFILE (USERS-SHOW)---*/
+
+
+#profile{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: 50%;
+}
+
+#profile .data{
+  margin-bottom: 15px;
+  position: relative;
+}
+
+#profile .items, #profile .options{
+  display: block;
+}
+
+#profile .options .edit, #profile .options .name{
+  color: rgb(0, 70, 0);
+  padding: 2px;
+  border: 1px solid rgb(0, 70, 0);
+  border-radius: 2px;
+  text-decoration: none;
+  float: right;
+  clear: right;
+  margin-bottom: 5px;
+}
+
+#edit-profile{
+  text-align: left;
+}
+
+#edit-profile li{
+  margin: 20px;
+}
+
+#edit-profile .submit{
+  margin-top: 20px;
+}
+
+/*---DEVISE---*/
+
+#edit-registration .field, #login .field, 
+  #signup .field, #password-reset .field{
+  margin-bottom: 15px;
+}
+
+#edit-registration .actions{
+  margin-bottom: 35px;
+}
+
+/*---EDIT_NAMES---*/
+

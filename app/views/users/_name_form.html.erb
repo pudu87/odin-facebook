@@ -1,0 +1,17 @@
+<div id="edit-name">
+  <%= form_with model: current_user, url: update_name_user_path(current_user), method: 'post', local: true do |f| %>
+    <ul>
+      <li class="field">
+        <%= f.label :first_name, 'First Name:' %><br>
+        <%= f.text_field :first_name %>
+      </li>
+      
+      <li class="field">
+        <%= f.label :last_name, 'Last Name:' %><br>
+        <%= f.text_field :last_name %>
+      </li>
+    </ul>
+
+    <%= f.submit 'Submit', class: "submit" %>
+  <% end %>
+</div>

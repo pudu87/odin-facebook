@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     @post.save
     flash.notice = 'Post created'
-    redirect_to user_path(current_user)
+    redirect_back(fallback_location: root_path)
   end
 
   def edit
@@ -23,14 +23,15 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.update(post_params)
     flash.notice = 'Post updated'
-    redirect_to user_path(current_user)
+    redirect_to root_path
+    #TODO: return to previous path
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     flash.notice = 'Post deleted'
-    redirect_to user_path(current_user)
+    redirect_back(fallback_location: root_path)
   end
 
   private

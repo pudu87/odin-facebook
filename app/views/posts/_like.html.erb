@@ -1,8 +1,10 @@
-<div>
-  <%= post.likes.count %> LIKES || 
+<div class="likes">
+  <div id="count">
+    <%= pluralize(post.likes.count, 'like') %>
+  </div>
   <% unless current_user.likes.find_by_post_id(post.id) %>
-    <%= link_to "---Like---", post_likes_path(post), method: :post %>
+    <%= link_to "Like", post_likes_path(post), method: :post, id: "like" %>
   <% else %>
-    <%= link_to "--Unlike--", post_like_path(post, post.likes.find_by_user_id(current_user)), method: :delete %>
+    <%= link_to "Unlike", post_like_path(post, post.likes.find_by_user_id(current_user)), method: :delete, id: "unlike" %>
   <% end %>
 </div>

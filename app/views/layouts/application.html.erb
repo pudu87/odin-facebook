@@ -14,20 +14,47 @@
     <p class="alert"><%= alert %></p>
 
     <div class="navbar">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.full_name %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path %> |
-        <%= link_to "Sign up", new_user_registration_path %> |
-        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-      <% end %>
-      
-      <% if current_user && !current_user.pending_friends.empty? %>
-        <br><%= link_to "You have friendship requests.", root_path %>
-      <% end %>
+      <div class="container" id="links">
+        <div id="nav-title">
+          <%= link_to "OdinFacebook", root_path, class: "nav-item" %>
+        </div>
+
+        <div id="nav-links">
+          <% if user_signed_in? %>
+            <%= link_to "Friends", users_path, class: "nav-item" %>
+            <%= link_to "My Profile", user_path(current_user), class: "nav-item" %>
+          <% end %>
+        </div>
+
+        <div id="nav-logins">
+          <% if user_signed_in? %>
+            <%= link_to "Change password", edit_user_registration_path, class: "nav-item" %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item" %>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class: "nav-item" %>
+            <%= link_to "Sign up", new_user_registration_path, class: "nav-item" %>
+            <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "nav-item" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container" id="messages">
+        <div id="nav-user">
+          <% if user_signed_in? %>
+              Logged in as <strong><%= current_user.full_name %></strong>.
+          <% end %>
+        </div>
+        
+        <% if current_user && !current_user.pending_friends.empty? %>
+          <div id="nav-requests">
+            <%= link_to "You have friendship requests!", users_path, class: "nav-item" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <%= yield %>
+
+    <div id="wrapper">
+      <%= yield %>
+    </div>
   </body>
 </html>

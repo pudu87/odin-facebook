@@ -1,10 +1,14 @@
-<div>
+<div id="new-post">
   <%= form_with model: post, local: true do |f| %>
-    <%= f.text_area :content %><br>
-    <br>
-    <%= f.label :photo, 'Upload photo:' %>
-    <%= f.file_field :photo %><br>
-    <br>
-    <%= f.submit 'Submit' %>
+    <%= f.text_area :content, rows: 4, placeholder: "Type here your next post..." %>
+
+    <div class="buttons">
+      <div class="photo">
+        <%= f.label :photo, 'Upload photo:' %>
+        <%= f.file_field :photo %>
+      </div>
+
+      <%= f.submit 'Submit', class: "submit" %>
+    </div>
   <% end %>
 </div>

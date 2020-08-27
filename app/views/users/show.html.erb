@@ -3,9 +3,11 @@
 <h3>About <%= @user.first_name %></h3>
 <%= render partial: 'profile', locals: {profile: @user.profile} %>
 
-<h3>Posts</h3>
-<%= render partial: 'posts/form', locals: {post: @post} %>
-<%= render partial: 'posts/post', collection: @posts %>
+<% if current_user.confirmed_friends.include?(@user) || current_user == @user %>
+  <h3><%= @user.first_name %>'s posts</h3>
 
-<%= link_to ">>Timeline", root_path %> ||
-<%= link_to ">>Friends", users_path %>
+  <% if current_user == @user %>
+    <%= render partial: 'posts/form', locals: {post: @post} %>
+  <% end %>
+  <%= render partial: 'posts/post', collection: @posts %>
+<% end %>

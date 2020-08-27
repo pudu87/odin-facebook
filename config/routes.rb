@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
     resources :profiles, only: [:edit, :update]
+    member do
+      get "edit_name"
+      post "update_name"
+    end
   end
   resources :friendships, only: [:create, :update, :destroy]
   resources :posts, except: [:show, :new] do

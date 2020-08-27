@@ -1,22 +1,33 @@
-<%= form_with model: @profile, url: [@profile.user, @profile], local: true do |f| %>
-  <%= f.label :birthdate, "What's your birthdate?" %><br>
-  <%= f.date_field :birthdate %><br>
-  <br>
-  <%= f.label :sex, 'Select your gender:' %><br>
-  <%= f.radio_button :sex, 'M' %>
-  <%= f.label :M, 'XY' %><br>
-  <%= f.radio_button :sex, 'F' %>
-  <%= f.label :F, 'XX' %><br>
-  <%= f.radio_button :sex, 'X' %>
-  <%= f.label :X, 'None of the previous' %><br>
-  <%= f.radio_button :sex, '' %>
-  <%= f.label :Hide, 'Hide' %><br>
-  <br>
-  <%= f.label :location, 'Where do you live?' %><br>
-  <%= f.text_field :location %><br>
-  <br>
-  <%= f.label :photo, 'Send us a nice picture of yourself:' %><br>
-  <%= f.file_field :photo %><br>
-  <br>
-  <%= f.submit 'Submit' %>
-<% end %>
+<div id="edit-profile">
+  <%= form_with model: @profile, url: [@profile.user, @profile], local: true do |f| %>
+    <ul>
+    <li class="birthdate">
+      <%= f.label :birthdate, "What's your birth date?" %><br>
+      <%= f.date_field :birthdate %>
+    </li>
+
+    <li class="radio-buttons">
+      <%= f.label :sex, 'Select your gender:' %><br>
+      <%= f.radio_button :sex, 'M' %>
+      <%= f.label :M, 'XY' %><br>
+      <%= f.radio_button :sex, 'F' %>
+      <%= f.label :F, 'XX' %><br>
+      <%= f.radio_button :sex, 'X' %>
+      <%= f.label :X, 'None of the previous' %><br>
+      <%= f.radio_button :sex, '' %>
+      <%= f.label :Hide, 'Hide' %>
+    </li>
+
+    <li class="location">
+      <%= f.label :location, 'Where do you live?' %><br>
+      <%= f.text_field :location %>
+    </li>
+    
+    <li class="photo">
+      <%= f.label :photo, 'Upload a nice picture of yourself:' %><br>
+      <%= f.file_field :photo %>
+    </li>
+
+    <%= f.submit 'Submit', class: "submit" %>
+  <% end %>
+</div>
