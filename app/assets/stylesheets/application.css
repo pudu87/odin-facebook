@@ -20,3 +20,13 @@
   width: 100%;
   font-size: 14px;
 }
+
+.alert, .notice {
+  position: fixed;
+  bottom: 0;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+  background-color: rgb(209, 238, 183);
+  font-family: 'Times New Roman', Times, serif;
+}
